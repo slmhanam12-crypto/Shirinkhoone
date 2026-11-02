@@ -1,0 +1,250 @@
+/* ============================================================
+   شیرینی‌خونه – استایل اپ
+   رنگ‌ها را فقط از همین بخش :root عوض کن.
+   ============================================================ */
+:root {
+  --main: #A96F52;      /* کاراملی: دکمه‌های اصلی */
+  --soft: #E9B7B0;      /* صورتی ملایم: کارت‌ها و تزئین */
+  --soft-bg: #F8E6E1;   /* صورتی خیلی روشن (از رنگ فرعی ساخته شده) */
+  --bg: #FFF8EF;       /* کرم وانیلی: پس‌زمینه */
+  --text: #49372F;      /* قهوه‌ای تیره: متن */
+  --accent: #D98272;    /* گلبهی: قلب فعال و نشانگرها */
+  --line: #EBDCCB;      /* خط‌های جداکننده */
+  --radius: 20px;
+  --nav-h: 68px;
+}
+
+/* ----- فونت (فایل‌ها در پوشه‌ی fonts) ----- */
+@font-face { font-family: "Vazir"; src: url("./fonts/Vazir-Medium.ttf") format("truetype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Vazir"; src: url("./fonts/Vazir-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Vazir", Tahoma, "Segoe UI", sans-serif;
+  font-weight: 500;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.9;
+  font-size: 16px;
+  padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px) + 16px);
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; border: 0; background: none; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3 { font-weight: 700; line-height: 1.5; }
+
+/* ----- هدر ----- */
+.top {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; gap: 10px;
+  padding: calc(10px + env(safe-area-inset-top, 0px)) 18px 10px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.top img { border-radius: 10px; }
+.app-name { font-weight: 700; font-size: 20px; color: var(--main); }
+
+#view { max-width: 600px; margin: 0 auto; padding: 16px 18px 8px; outline: none; }
+.page { animation: fade .28s ease both; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ----- نوار پایین ----- */
+.bottom {
+  position: fixed; inset: auto 0 0 0; z-index: 30;
+  display: flex; justify-content: center;
+  height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: var(--bg); border-top: 1px solid var(--line);
+}
+.bottom a {
+  flex: 1; max-width: 200px; min-height: 48px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  font-size: 13px; color: var(--text); opacity: .75;
+  transition: opacity .2s, color .2s;
+}
+.bottom svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.bottom a.active { opacity: 1; color: var(--main); font-weight: 700; }
+.bottom a.active svg { stroke: var(--accent); }
+.bottom a.active[data-nav="favorites"] svg { fill: var(--soft); }
+
+/* ----- جستجو ----- */
+.search { display: flex; align-items: center; gap: 8px; background: #fff; border: 1.5px solid var(--line); border-radius: 16px; padding: 4px 14px; min-height: 52px; }
+.search svg { width: 22px; height: 22px; flex: none; fill: none; stroke: var(--main); stroke-width: 1.8; stroke-linecap: round; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; font-size: 16px; padding: 10px 0; outline: none; }
+.search:focus-within { border-color: var(--accent); }
+
+/* ----- تصویر شاخص صفحه‌ی اصلی ----- */
+.hero { display: block; position: relative; margin-top: 16px; border-radius: 26px; overflow: hidden; aspect-ratio: 16 / 10; background: var(--soft); }
+.hero img { width: 100%; height: 100%; object-fit: cover; }
+.hero .cap {
+  position: absolute; inset: auto 0 0 0; padding: 36px 16px 14px;
+  background: linear-gradient(to top, rgba(73,55,47,.78), rgba(73,55,47,0));
+  color: #fff; display: flex; align-items: flex-end; justify-content: space-between; gap: 10px;
+}
+.hero small { display: block; font-size: 13px; opacity: .9; }
+.hero h2 { font-size: 20px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 8px 22px; border-radius: 14px;
+  background: var(--main); color: #fff; font-weight: 700; font-size: 19px;
+  transition: transform .15s, background-color .2s;
+}
+.btn:active { transform: scale(.97); background: #94603F; }
+.hero .btn { min-height: 44px; font-size: 19px; padding: 4px 16px; flex: none; }
+
+/* ----- عنوان بخش‌ها ----- */
+.sec-title { margin: 26px 2px 12px; font-size: 19px; color: var(--text); }
+
+/* ----- کارت دسته‌بندی ----- */
+.cats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.cat { position: relative; display: block; border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1.05; background: var(--soft); transition: transform .2s; }
+.cat:active { transform: scale(.97); }
+.cat img { width: 100%; height: 100%; object-fit: cover; }
+.cat .lbl {
+  position: absolute; inset: auto 8px 8px 8px; display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg); border-radius: 14px; padding: 6px 14px; font-weight: 700; font-size: 17px;
+}
+.cat .lbl svg, .chev { width: 20px; height: 20px; fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ----- دکمه‌ی پیشنهاد بر اساس مواد ----- */
+.pick-btn {
+  display: flex; align-items: center; gap: 12px; width: 100%; margin-top: 22px;
+  background: var(--soft); border-radius: var(--radius); padding: 16px 18px; min-height: 72px;
+  font-weight: 700; font-size: 17px; line-height: 1.7; text-align: right; color: var(--text);
+  border: 2px solid var(--accent); transition: transform .15s;
+}
+.pick-btn:active { transform: scale(.98); }
+.pick-btn svg { width: 34px; height: 34px; flex: none; fill: none; stroke: var(--text); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ----- سربرگ صفحه‌های داخلی ----- */
+.page-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.back { width: 46px; height: 46px; flex: none; display: grid; place-items: center; border-radius: 14px; background: var(--soft-bg); }
+.back svg { width: 22px; height: 22px; fill: none; stroke: var(--text); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.page-head h1 { font-size: 21px; }
+
+/* ----- ورق زدن افقی کارت‌ها ----- */
+.counter { display: flex; align-items: center; justify-content: space-between; margin: 4px 2px 12px; }
+.counter .num { font-weight: 700; color: var(--main); }
+.arrows { display: flex; gap: 8px; }
+.arrow { width: 46px; height: 46px; border-radius: 14px; background: var(--soft-bg); display: grid; place-items: center; transition: transform .15s, opacity .2s; }
+.arrow:active { transform: scale(.92); }
+.arrow[disabled] { opacity: .35; }
+.arrow svg { width: 22px; height: 22px; fill: none; stroke: var(--text); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.snap { position: relative; display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 2px 14px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.snap::-webkit-scrollbar { display: none; }
+.slide { flex: 0 0 80%; scroll-snap-align: center; background: #fff; border-radius: 24px; overflow: hidden; border: 1px solid var(--line); transition: transform .25s; }
+.slide img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: var(--soft); }
+.slide .body { padding: 14px 16px 18px; }
+.slide h2 { font-size: 19px; }
+.slide p { font-size: 14px; opacity: .85; margin-top: 2px; }
+
+/* ----- کارت‌های فهرست (جستجو، علاقه‌مندی‌ها، پیشنهادها) ----- */
+.list { display: grid; gap: 12px; }
+.row { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 8px; transition: transform .15s; }
+.row:active { transform: scale(.98); }
+.row img { width: 92px; height: 78px; flex: none; object-fit: cover; border-radius: 12px; background: var(--soft); }
+.row .t { flex: 1; min-width: 0; }
+.row h3 { font-size: 17px; }
+.row p { font-size: 13.5px; opacity: .85; line-height: 1.7; }
+.row .miss { color: #8A4B3C; }
+
+/* ----- صفحه‌ی دستور ----- */
+.rhero { position: relative; border-radius: 26px; overflow: hidden; aspect-ratio: 3 / 2; background: var(--soft); }
+.rhero img { width: 100%; height: 100%; object-fit: cover; }
+.heart { position: absolute; top: 12px; left: 12px; width: 52px; height: 52px; border-radius: 50%; background: var(--bg); display: grid; place-items: center; }
+.heart svg { width: 28px; height: 28px; fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: fill .2s; }
+.heart[aria-pressed="true"] svg { fill: var(--accent); }
+.heart.pop svg { animation: pop .35s ease; }
+@keyframes pop { 40% { transform: scale(1.3); } 100% { transform: scale(1); } }
+.rback { position: absolute; top: 12px; right: 12px; }
+.rback .back { background: var(--bg); }
+.rtitle { margin-top: 16px; font-size: 24px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+.chip { background: var(--soft-bg); border-radius: 12px; padding: 2px 12px; font-size: 14px; }
+.stepper { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 20px; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 10px 14px; }
+.stepper b { font-size: 17px; }
+.stepper .ctl { display: flex; align-items: center; gap: 14px; }
+.stepper button { width: 46px; height: 46px; border-radius: 14px; background: var(--main); display: grid; place-items: center; transition: transform .15s; }
+.stepper button:active { transform: scale(.9); }
+.stepper button svg { width: 22px; height: 22px; stroke: #fff; stroke-width: 2.6; stroke-linecap: round; }
+.stepper .n { min-width: 34px; text-align: center; font-weight: 700; font-size: 20px; }
+.ing-group { margin-top: 14px; font-weight: 700; color: var(--main); }
+.ings { list-style: none; margin-top: 6px; }
+.ings li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 2px; border-bottom: 1px dashed var(--line); }
+.ings li span:last-child { font-weight: 700; white-space: nowrap; }
+.ings small { opacity: .75; font-size: 13px; }
+.steps { list-style: none; margin-top: 8px; }
+.steps li { position: relative; padding: 4px 48px 14px 0; }
+.steps li::before {
+  content: attr(data-n); position: absolute; right: 0; top: 4px;
+  width: 36px; height: 36px; border-radius: 50%; background: var(--soft); display: grid; place-items: center; font-weight: 700; line-height: 1;
+}
+.secret { margin-top: 24px; background: var(--soft-bg); border-radius: 22px; padding: 16px 18px 12px; border: 1.5px solid var(--soft); }
+.secret h2 { font-size: 19px; }
+.secret ul { margin: 8px 18px 6px 0; }
+.secret li { margin-bottom: 6px; }
+
+/* ----- آشپزخانه و بخش‌های بازشونده ----- */
+.hint { margin: -4px 2px 14px; opacity: .85; }
+.kitchen { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tile { position: relative; display: flex; flex-direction: column; align-items: stretch; gap: 6px; padding: 8px 8px 10px; background: #fff; border: 2px solid var(--line); border-radius: 22px; text-align: center; transition: transform .2s, border-color .2s, box-shadow .2s; }
+.tile.wide { grid-column: 1 / -1; }
+.tile:active { transform: scale(.97); }
+.tile.open { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 18px rgba(169, 111, 82, .18); }
+.pic { display: grid; place-items: center; aspect-ratio: 1 / 1; border-radius: 16px; background: var(--soft-bg); overflow: hidden; }
+.tile.wide .pic { aspect-ratio: 2 / 1; }
+.pic img { width: 100%; height: 100%; object-fit: contain; }
+.pic > svg { display: none; width: 44px; height: 44px; fill: none; stroke: var(--main); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.pic.noimg > svg { display: block; }
+.pic.noimg img { display: none; }
+.tl { font-weight: 700; font-size: 15px; line-height: 1.6; }
+.badge { position: absolute; top: 6px; left: 6px; min-width: 30px; height: 30px; padding: 0 8px; display: grid; place-items: center; background: var(--accent); color: var(--text); border-radius: 15px; font-weight: 700; font-size: 15px; animation: pop .3s ease; }
+.drawer { grid-column: 1 / -1; background: var(--soft-bg); border: 1.5px solid var(--soft); border-radius: 22px; padding: 14px 14px 4px; animation: drawer .3s ease both; }
+.drawer-title { font-weight: 700; color: var(--main); }
+.drawer .chips-pick { margin: 10px 0 8px; }
+@keyframes drawer { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+
+/* ----- انتخاب مواد ----- */
+.chips-pick { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
+.pchip { min-height: 46px; padding: 4px 16px; border-radius: 23px; background: #fff; border: 1.5px solid var(--line); font-size: 16px; transition: background-color .2s, border-color .2s, transform .15s; }
+.pchip:active { transform: scale(.95); }
+.pchip[aria-pressed="true"] { background: var(--soft); border-color: var(--accent); font-weight: 700; }
+.selected-box { margin-top: 16px; background: var(--soft-bg); border-radius: 16px; padding: 10px 14px; margin-bottom: 14px; font-size: 15px; }
+.results h2 { margin: 22px 2px 10px; font-size: 19px; }
+.sticky-act { position: sticky; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px) + 10px); margin-top: 16px; }
+.sticky-act .btn { width: 100%; }
+
+/* ----- درباره من ----- */
+.about { text-align: center; padding-top: 10px; }
+.about img { margin: 0 auto; width: 120px; height: 120px; border-radius: 28px; }
+.about h1 { margin-top: 14px; font-size: 26px; color: var(--main); }
+.about .tag { font-weight: 700; margin-top: 4px; }
+.about .intro { margin-top: 16px; text-align: right; }
+.maker { margin-top: 24px; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 18px; }
+.maker b { font-size: 19px; }
+.links { display: grid; gap: 10px; margin-top: 14px; }
+.links .btn { font-size: 18px; }
+
+/* ----- پیام‌های خالی و خطا ----- */
+.empty { text-align: center; padding: 36px 16px; background: #fff; border: 1.5px dashed var(--soft); border-radius: 22px; margin-top: 12px; }
+.empty b { display: block; font-size: 18px; margin-bottom: 6px; }
+.empty .btn { margin-top: 14px; }
+
+/* ----- نوار به‌روزرسانی ----- */
+.update-bar {
+  position: fixed; z-index: 40; right: 14px; left: 14px; max-width: 520px; margin: 0 auto;
+  bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px) + 12px);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--text); color: var(--bg); border-radius: 16px; padding: 10px 14px;
+  animation: fade .3s ease both;
+}
+.update-bar[hidden] { display: none; }
+.update-bar button { background: var(--soft); color: var(--text); font-weight: 700; border-radius: 12px; min-height: 44px; padding: 4px 16px; }
+
+/* ----- کاربرانی که انیمیشن را خاموش کرده‌اند ----- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
