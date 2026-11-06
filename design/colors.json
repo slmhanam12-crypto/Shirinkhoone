@@ -1,0 +1,8 @@
+{
+  "main": "#A96F52",
+  "soft": "#E9B7B0",
+  "background": "#FFF8EF",
+  "text": "#49372F",
+  "accent": "#D98272",
+  "derived": { "softBackground": "#F8E6E1", "line": "#EBDCCB" }
+}
