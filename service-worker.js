@@ -6,7 +6,7 @@
    نسخه‌ی جدید روی گوشی کاربرها نصب شود و نوار
    «نسخه‌ی جدید آماده است» نشان داده شود.
    ============================================================ */
-const CACHE_VERSION = "v3";
+const CACHE_VERSION = "v4";
 const CACHE_NAME = "shirinikhoone-" + CACHE_VERSION;
 
 const FILES = [
