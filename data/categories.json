@@ -1,6 +1,0 @@
-{
-  "categories": [
-    { "id": "cakes",  "title": "کیک‌ها",    "cover": "images/chocolate-cake.webp" },
-    { "id": "sweets", "title": "شیرینی‌ها", "cover": "images/chickpea-cookie.webp" }
-  ]
-}
